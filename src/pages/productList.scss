@@ -1,0 +1,9 @@
+.ProductList {
+  display: flex;
+  &-Filter {
+    width: 450px;
+  }
+  &-products {
+    display: flex;
+  }
+}
