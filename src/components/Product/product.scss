@@ -8,6 +8,7 @@
   justify-content: center;
   height: 300px;
   width: 300px;
+  position: relative;
 
   &-image {
     width: 200px;
@@ -24,5 +25,13 @@
     color: $color-primary-base;
     font-weight: 700;
     font-size: 14px;
+  }
+
+  &-link {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
   }
 }

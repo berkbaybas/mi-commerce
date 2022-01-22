@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Logo from '../icons/Logo'
 
 function Header() {
@@ -5,12 +6,12 @@ function Header() {
     <header className="Header">
       <div className="container">
         <div className="Header-logo">
-          <Logo className="Header-logo-icon" />
+          <Link to="/">
+            <Logo className="Header-logo-icon" />
+          </Link>
         </div>
         <div className="Header-learnMore">
-          <a href="/">
-            <span>Redmi Note 10 5G hakkinda daha fazla bilgi edinin</span>
-          </a>
+          <a>Redmi Note 10 5G hakkinda daha fazla bilgi edinin</a>
         </div>
       </div>
     </header>

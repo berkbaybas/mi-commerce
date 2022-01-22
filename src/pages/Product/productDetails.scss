@@ -1,0 +1,223 @@
+.ProductDetail-wrapper {
+  background-color: white;
+  position: relative;
+}
+.ProductDetail {
+  display: flex;
+  align-items: flex-start;
+  &-image {
+    flex: 1;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    img {
+      height: 550px;
+      max-width: 550px;
+    }
+  }
+
+  &-option {
+    flex: 1;
+    padding: 48px;
+    background-color: $color-surface-background;
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $color-light-border;
+
+      .info-name {
+        color: $color-title-dark;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 48px;
+        margin-bottom: 8px;
+      }
+
+      .info-desc {
+        color: $color-light-variant;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 8px;
+      }
+
+      .info-price {
+        color: $color-primary-base;
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+
+    &-offer {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $color-light-border;
+
+      ul {
+        li {
+          list-style-type: disc;
+          font-size: 14px;
+          color: $color-light-variant;
+          font-weight: 300;
+          margin-left: 14px;
+        }
+      }
+    }
+
+    &-support {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $color-light-border;
+
+      .support-item {
+        display: flex;
+        align-items: center;
+        &:not(:first-child) {
+          margin-left: 15px;
+        }
+
+        &-link {
+          text-decoration: underline;
+          color: $color-dark-variant;
+          font-weight: 300;
+          margin-left: 10px;
+        }
+
+        svg {
+          color: $color-primary-base;
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+
+    &-memory {
+      padding-top: 56px;
+
+      .memory-item {
+        height: 50px;
+        width: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: 1px solid $color-light-border;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+
+    &-color {
+      padding-top: 56px;
+
+      .color-item {
+        height: 50px;
+        width: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: 1px solid $color-light-border;
+
+        &-hex {
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+        }
+
+        span {
+          font-size: 16px;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    &-quantity {
+      padding-top: 56px;
+
+      .quantity-item {
+        display: flex;
+        align-items: center;
+        height: 36px;
+
+        &-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: white;
+          height: 100%;
+          width: 36px;
+
+          svg {
+            font-size: 10px;
+          }
+        }
+
+        input {
+          width: 64px;
+          height: 36px;
+          display: flex;
+          text-align: center;
+          border: 0;
+        }
+      }
+    }
+
+    &-subtotal {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: white;
+      padding: 20px;
+      width: 100%;
+
+      .subtotal-calculate {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $color-light-variant;
+      }
+
+      .subtotal-sum {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $color-primary-base;
+        margin-top: 20px;
+
+        &-title {
+          font-size: 20px;
+        }
+
+        &-value {
+          font-size: 30px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    &-submit {
+      margin-top: 56px;
+      width: 100%;
+      height: 50px;
+
+      button {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-color: $color-primary-base;
+        color: white;
+        text-transform: uppercase;
+        font-size: 20px;
+      }
+    }
+  }
+}

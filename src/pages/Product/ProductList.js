@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import Product from '../components/Product'
+import Product from '../../components/Product'
 
-import { API_URL } from '../constant/ApiUrl'
+import { API_URL } from '../../constant/ApiUrl'
 
 function ProductList() {
   const [products, setProducts] = useState([])

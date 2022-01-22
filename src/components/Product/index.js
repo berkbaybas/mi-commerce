@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Product({ products }) {
   return (
@@ -6,6 +7,7 @@ function Product({ products }) {
       {products.map((product) => {
         return (
           <div className="Product" key={product.id}>
+            <Link className="Product-link" to={`product/${product.id}`} />
             <img
               src={product.colors[0].image}
               className="Product-image"

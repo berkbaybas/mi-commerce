@@ -3,8 +3,8 @@
 body {
   //font-family: $font-family;
   font-size: 16px;
-  height: 2000px;
   background-color: $color-primary-background;
+  height: 2000px;
 }
 
 .container {
@@ -16,4 +16,14 @@ body {
 
 button {
   cursor: pointer;
+}
+
+//shared component style
+
+.Product_option_title {
+  font-size: 20px;
+  color: $color-light-variant;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 20px;
 }
