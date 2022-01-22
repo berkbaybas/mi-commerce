@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { ADD_TO_CART } from '../../constant/actionTypes'
+import { addToCart } from '../../actions/cartActions'
 
 import ProductOptionTitle from '../../components/shared/ProductOptionTitle'
 import { FiCheckCircle, FiMinus, FiPlus } from 'react-icons/fi'
@@ -9,6 +12,8 @@ import { API_URL } from '../../constant/ApiUrl'
 
 function ProductDetail() {
   let params = useParams()
+  const dispatch = useDispatch()
+  const cart = useSelector((state) => state.cart)
   const [product, setProduct] = useState(null)
 
   useEffect(() => {
@@ -20,6 +25,14 @@ function ProductDetail() {
         console.log(err)
       })
   }, [])
+
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
+
+  const addCart = (product) => {
+    dispatch(addToCart(product))
+  }
 
   return (
     <div className="ProductDetail-wrapper">
@@ -61,7 +74,7 @@ function ProductDetail() {
                 <ProductOptionTitle>Kapasite</ProductOptionTitle>
                 {product.memory.map((el) => {
                   return (
-                    <button className="memory-item">
+                    <button key={el.id} className="memory-item">
                       <span className="memory-item-value">
                         {product.ram}GB+{el.gb}GB
                       </span>
@@ -73,7 +86,7 @@ function ProductDetail() {
                 <ProductOptionTitle>Renk</ProductOptionTitle>
                 {product.colors.map((color) => {
                   return (
-                    <button className="color-item">
+                    <button key={color.id} className="color-item">
                       <div
                         className="color-item-hex"
                         style={{ backgroundColor: color.hex }}
@@ -106,7 +119,7 @@ function ProductDetail() {
                 </div>
               </div>
               <div className="ProductDetail-option-submit">
-                <button>Şimdi Satın Al</button>
+                <button onClick={() => addCart(product)}>Şimdi Satın Al</button>
               </div>
             </div>
           </div>
