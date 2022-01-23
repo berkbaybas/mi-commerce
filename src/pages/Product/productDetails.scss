@@ -97,75 +97,68 @@
 
     &-memory {
       padding-top: 56px;
-
-      .memory-item {
-        height: 50px;
-        width: 160px;
+      &-wrapper {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        border: 1px solid $color-light-border;
-        span {
-          font-size: 16px;
+        .memory-item {
+          height: 50px;
+          width: 160px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: white;
+          border: 1px solid $color-light-border;
+
+          &:not(:first-child) {
+            margin-left: 15px;
+          }
+
+          &.active {
+            border: 1px solid $color-primary-base;
+          }
+
+          span {
+            font-size: 16px;
+          }
         }
       }
     }
 
     &-color {
       padding-top: 56px;
-
-      .color-item {
-        height: 50px;
-        width: 160px;
+      &-wrapper {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        border: 1px solid $color-light-border;
+        .color-item {
+          height: 50px;
+          width: 160px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: white;
+          border: 1px solid $color-light-border;
 
-        &-hex {
-          border-radius: 50%;
-          height: 30px;
-          width: 30px;
-        }
+          &:not(:first-child) {
+            margin-left: 15px;
+          }
 
-        span {
-          font-size: 16px;
-          margin-left: 10px;
+          &.active {
+            border: 1px solid $color-primary-base;
+          }
+          &-hex {
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+          }
+
+          span {
+            font-size: 16px;
+            margin-left: 10px;
+          }
         }
       }
     }
 
     &-quantity {
       padding-top: 56px;
-
-      .quantity-item {
-        display: flex;
-        align-items: center;
-        height: 36px;
-
-        &-button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: white;
-          height: 100%;
-          width: 36px;
-
-          svg {
-            font-size: 10px;
-          }
-        }
-
-        input {
-          width: 64px;
-          height: 36px;
-          display: flex;
-          text-align: center;
-          border: 0;
-        }
-      }
     }
 
     &-subtotal {

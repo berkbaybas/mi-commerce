@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { ADD_TO_CART } from '../../constant/actionTypes'
 import { addToCart } from '../../actions/cartActions'
 
 import ProductOptionTitle from '../../components/shared/ProductOptionTitle'
-import { FiCheckCircle, FiMinus, FiPlus } from 'react-icons/fi'
+import Quantity from '../../components/shared/Quantity'
+import { FiCheckCircle } from 'react-icons/fi'
 
 import { API_URL } from '../../constant/ApiUrl'
 
@@ -14,7 +14,11 @@ function ProductDetail() {
   let params = useParams()
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
+
   const [product, setProduct] = useState(null)
+  const [memory, setMemory] = useState({})
+  const [color, setColor] = useState({})
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     axios(`${API_URL}/products/${params.id}`)
@@ -27,11 +31,42 @@ function ProductDetail() {
   }, [])
 
   useEffect(() => {
+    if (product) {
+      setColor(product.colors[0])
+      setMemory(product.memory[0])
+    }
+  }, [product])
+
+  // TODO delete logs
+  useEffect(() => {
+    console.log(memory)
+    console.log(color)
+  }, [color, memory])
+
+  useEffect(() => {
     console.log(cart)
   }, [cart])
 
   const addCart = (product) => {
-    dispatch(addToCart(product))
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        slug: product.slug,
+        ram: product.ram,
+        sim: product.sim,
+        color: color,
+        memory: memory
+      })
+    )
+  }
+
+  const handleColor = (color) => {
+    setColor(color)
+  }
+
+  const handleMemory = (memory) => {
+    setMemory(memory)
   }
 
   return (
@@ -40,12 +75,14 @@ function ProductDetail() {
         {product && (
           <div className="ProductDetail">
             <div className="ProductDetail-image">
-              <img src={product.colors[0].image} alt={product.name} />
+              <img src={color.image} alt={product.name} />
             </div>
             <div className="ProductDetail-option">
               <div className="ProductDetail-option-info">
                 <h3 className="info-name">{product.name}</h3>
-                <p className="info-desc">{product.slug}</p>
+                <p className="info-desc">
+                  {memory.ram}GB+{memory.gb}GB, {color.name}
+                </p>
                 <p className="info-price">{product.price}TL</p>
               </div>
               <div className="ProductDetail-option-offer">
@@ -72,50 +109,58 @@ function ProductDetail() {
               </div>
               <div className="ProductDetail-option-memory">
                 <ProductOptionTitle>Kapasite</ProductOptionTitle>
-                {product.memory.map((el) => {
-                  return (
-                    <button key={el.id} className="memory-item">
-                      <span className="memory-item-value">
-                        {product.ram}GB+{el.gb}GB
-                      </span>
-                    </button>
-                  )
-                })}
+                <div className="ProductDetail-option-memory-wrapper">
+                  {product.memory.map((el) => {
+                    return (
+                      <button
+                        key={el.id}
+                        className={`memory-item ${
+                          memory.id === el.id ? 'active' : ''
+                        }`}
+                        onClick={() => handleMemory(el)}
+                      >
+                        <span className="memory-item-value">
+                          {el.ram}GB+{el.gb}GB
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
               <div className="ProductDetail-option-color">
                 <ProductOptionTitle>Renk</ProductOptionTitle>
-                {product.colors.map((color) => {
-                  return (
-                    <button key={color.id} className="color-item">
-                      <div
-                        className="color-item-hex"
-                        style={{ backgroundColor: color.hex }}
-                      ></div>
-                      <span>{color.name}</span>
-                    </button>
-                  )
-                })}
+                <div className="ProductDetail-option-color-wrapper">
+                  {product.colors.map((el) => {
+                    return (
+                      <button
+                        key={el.id}
+                        className={`color-item ${
+                          el.id === color.id ? 'active' : ''
+                        }`}
+                        onClick={() => handleColor(el)}
+                      >
+                        <div
+                          className="color-item-hex"
+                          style={{ backgroundColor: el.hex }}
+                        ></div>
+                        <span>{el.name}</span>
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
               <div className="ProductDetail-option-quantity">
                 <ProductOptionTitle>Adet</ProductOptionTitle>
-                <div className="quantity-item">
-                  <button className="quantity-item-button">
-                    <FiMinus />
-                  </button>
-                  <input readOnly value={1} />
-                  <button className="quantity-item-button">
-                    <FiPlus />
-                  </button>
-                </div>
+                <Quantity qty={quantity} />
               </div>
               <div className="ProductDetail-option-subtotal">
                 <div className="subtotal-calculate">
                   <p>Mi 11 Lite 5G NE Beyaz 8GB+256GB * 1</p>
-                  <p>8.599,00TL</p>
+                  <p>{memory.price}TL</p>
                 </div>
                 <div className="subtotal-sum">
                   <p className="subtotal-sum-title">Toplam:</p>
-                  <p className="subtotal-sum-value">8.599,00TL</p>
+                  <p className="subtotal-sum-value">{memory.price}TL</p>
                 </div>
               </div>
               <div className="ProductDetail-option-submit">

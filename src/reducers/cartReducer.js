@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../constant/actionTypes'
+import { ADD_TO_CART, CART_TOTAL } from '../constant/actionTypes'
 
 const INITIAL_STATE = {
   items: [],
@@ -8,20 +8,24 @@ const INITIAL_STATE = {
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_TO_CART:
+      let uniqueSlug = `${action.payload.id}-${action.payload.color.id}-${action.payload.memory.id}`
       const inCart = state.items.find((item) =>
-        item.id == action.payload.id ? true : false
+        item.slug === uniqueSlug ? true : false
       )
-      console.log(action.payload.id)
+
       return {
         ...state,
         items: inCart
           ? state.items.map((item) =>
-              item.id === action.payload.id
-                ? { ...item, qty: item.qty + 1 }
-                : item
+              item.slug === uniqueSlug ? { ...item, qty: item.qty + 1 } : item
             )
-          : [...state.items, { ...action.payload, qty: 1 }]
+          : [...state.items, { ...action.payload, qty: 1, slug: uniqueSlug }]
       }
+    case CART_TOTAL:
+      const total = state.items.reduce((acc, cur) => {
+        return acc + cur.memory.price * cur.qty
+      }, 0)
+      return { ...state, totalPrice: total }
 
     default:
       return state

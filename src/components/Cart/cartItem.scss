@@ -1,0 +1,64 @@
+.CartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 196px;
+  width: 100%;
+  padding: 20px 50px;
+  background-color: white;
+
+  &-image {
+    display: flex;
+    height: 144px;
+    width: 144px;
+    border: 1px solid $color-light-border;
+    border-radius: 8px;
+    padding: 5px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-name {
+    flex: 2;
+    padding-left: 15px;
+    color: $color-title-base;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  &-price {
+    text-align: center;
+    flex: 1;
+    color: $color-title-base;
+    font-size: 16px;
+  }
+
+  &-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  &-total {
+    text-align: center;
+    flex: 1;
+    color: $color-primary-base;
+  }
+
+  &-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+
+    svg {
+      color: $color-button-delete;
+      font-size: 14px;
+    }
+  }
+}

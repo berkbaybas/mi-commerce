@@ -29,9 +29,42 @@
     }
   }
   &-learnMore {
-    a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
       font-size: 14px;
       color: $color-primary-link;
+    }
+    .cart {
+      margin-left: 10px;
+      display: inline-flex;
+      position: relative;
+
+      svg {
+        font-size: 36px;
+        color: $color-primary-base;
+      }
+
+      &-badge {
+        position: absolute;
+        right: 0;
+        background-color: white;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        border: 1px solid$color-primary-base;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          color: $color-primary-base;
+          font-size: 16px;
+          display: flex;
+          justify-content: center;
+        }
+      }
     }
   }
 }
