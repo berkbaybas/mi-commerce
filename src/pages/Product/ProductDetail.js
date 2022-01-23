@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import axios from 'axios'
 import { addToCart } from '../../actions/cartActions'
+import { addChoosenProduct } from '../../actions/productActions'
 
 import ProductOptionTitle from '../../components/shared/ProductOptionTitle'
 import Quantity from '../../components/shared/Quantity'
-import { FiCheckCircle } from 'react-icons/fi'
+import { FiMinus, FiPlus, FiCheckCircle } from 'react-icons/fi'
+import {} from 'react-icons/fi'
 
 import { API_URL } from '../../constant/ApiUrl'
 
 function ProductDetail() {
   let params = useParams()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
 
@@ -34,18 +38,17 @@ function ProductDetail() {
     if (product) {
       setColor(product.colors[0])
       setMemory(product.memory[0])
+      dispatch(addChoosenProduct(product))
     }
   }, [product])
 
-  // TODO delete logs
-  useEffect(() => {
-    console.log(memory)
-    console.log(color)
-  }, [color, memory])
+  const decreaseItem = () => {
+    setQuantity(quantity - 1)
+  }
 
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
+  const increaseItem = () => {
+    setQuantity(quantity + 1)
+  }
 
   const addCart = (product) => {
     dispatch(
@@ -56,9 +59,13 @@ function ProductDetail() {
         ram: product.ram,
         sim: product.sim,
         color: color,
-        memory: memory
+        memory: memory,
+        qty: quantity
       })
     )
+    setTimeout(() => {
+      navigate('/cart')
+    }, 750)
   }
 
   const handleColor = (color) => {
@@ -151,16 +158,37 @@ function ProductDetail() {
               </div>
               <div className="ProductDetail-option-quantity">
                 <ProductOptionTitle>Adet</ProductOptionTitle>
-                <Quantity qty={quantity} />
+                <div className="quantity-item">
+                  <button
+                    className="quantity-item-button"
+                    onClick={decreaseItem}
+                  >
+                    <FiMinus />
+                  </button>
+                  <div className="quantity-item-value">
+                    <span>{quantity}</span>
+                  </div>
+                  <button
+                    className="quantity-item-button"
+                    onClick={increaseItem}
+                  >
+                    <FiPlus />
+                  </button>
+                </div>
               </div>
               <div className="ProductDetail-option-subtotal">
                 <div className="subtotal-calculate">
-                  <p>Mi 11 Lite 5G NE Beyaz 8GB+256GB * 1</p>
-                  <p>{memory.price}TL</p>
+                  <p>
+                    {product.name} {color.name} {memory.ram}GB+{memory.gb}GB *{' '}
+                    {quantity}
+                  </p>
+                  <p>{memory.price * quantity}TL</p>
                 </div>
                 <div className="subtotal-sum">
                   <p className="subtotal-sum-title">Toplam:</p>
-                  <p className="subtotal-sum-value">{memory.price}TL</p>
+                  <p className="subtotal-sum-value">
+                    {memory.price * quantity}TL
+                  </p>
                 </div>
               </div>
               <div className="ProductDetail-option-submit">

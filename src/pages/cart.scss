@@ -1,3 +1,33 @@
 .Cart {
   margin-top: 30px;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+    padding-left: 50px;
+    color: $color-light-title;
+
+    &-image {
+      width: 144px;
+    }
+
+    &-name {
+      flex: 2;
+      margin-left: 15px;
+    }
+
+    &-price {
+      flex: 1;
+    }
+
+    &-quantity {
+      flex: 1;
+    }
+
+    &-total {
+      flex: 1;
+    }
+  }
 }

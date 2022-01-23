@@ -1,7 +1,14 @@
+import { useDispatch } from 'react-redux'
+import { removeFromCart } from '../../actions/cartActions'
+
 import { AiOutlineClose } from 'react-icons/ai'
 import Quantity from '../shared/Quantity'
 
 function CartItem({ item }) {
+  const dispatch = useDispatch()
+  const removeItem = (item) => {
+    dispatch(removeFromCart(item))
+  }
   return (
     <div className="CartItem">
       <div className="CartItem-image">
@@ -17,13 +24,13 @@ function CartItem({ item }) {
       </div>
       <div className="CartItem-quantity">
         <p>
-          <Quantity qty={item.qty} />
+          <Quantity item={item} />
         </p>
       </div>
       <div className="CartItem-total">
         <p>{item.memory.price * item.qty}TL</p>
       </div>
-      <button className="CartItem-delete">
+      <button className="CartItem-delete" onClick={() => removeItem(item)}>
         <AiOutlineClose />
       </button>
     </div>

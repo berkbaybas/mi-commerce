@@ -1,18 +1,24 @@
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 
 import Logo from '../icons/Logo'
 import { useEffect, useState } from 'react'
 
 function Header() {
+  const location = useLocation()
   const itemsInCart = useSelector((state) => state.cart.items)
+  const choosenProduct = useSelector((state) => state.product.choosenProduct)
   const [totalCount, setTotalCount] = useState(0)
 
   useEffect(() => {
-    console.log(itemsInCart.reduce((acc, cur) => acc + cur.qty, 0))
     setTotalCount(itemsInCart.reduce((acc, cur) => acc + cur.qty, 0))
   }, [itemsInCart])
+
+  //TODO DELETE LOG
+  useEffect(() => {
+    console.log(choosenProduct)
+  }, [choosenProduct])
 
   return (
     <header className="Header">
@@ -23,7 +29,10 @@ function Header() {
           </Link>
         </div>
         <div className="Header-learnMore">
-          <span>Redmi Note 10 5G hakkinda daha fazla bilgi edinin</span>
+          {location.pathname.includes('product') && (
+            <span>{choosenProduct.name} hakkinda daha fazla bilgi edinin</span>
+          )}
+
           <Link to="/cart" className="cart">
             <FaShoppingCart />
             <div className="cart-badge">

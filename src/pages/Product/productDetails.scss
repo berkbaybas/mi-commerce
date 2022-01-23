@@ -6,7 +6,8 @@
   display: flex;
   align-items: flex-start;
   &-image {
-    flex: 1;
+    flex-basis: 50%;
+    flex-grow: 0;
     background-color: white;
     position: sticky;
     top: 0;
@@ -17,7 +18,9 @@
   }
 
   &-option {
-    flex: 1;
+    flex-basis: 50%;
+    flex-grow: 0;
+    width: 50%;
     padding: 48px;
     background-color: $color-surface-background;
 
@@ -99,6 +102,8 @@
       padding-top: 56px;
       &-wrapper {
         display: flex;
+        flex-wrap: wrap;
+
         .memory-item {
           height: 50px;
           width: 160px;
@@ -107,10 +112,8 @@
           align-items: center;
           background-color: white;
           border: 1px solid $color-light-border;
-
-          &:not(:first-child) {
-            margin-left: 15px;
-          }
+          margin-right: 10px;
+          margin-top: 10px;
 
           &.active {
             border: 1px solid $color-primary-base;
@@ -125,8 +128,11 @@
 
     &-color {
       padding-top: 56px;
+
       &-wrapper {
         display: flex;
+        flex-wrap: wrap;
+
         .color-item {
           height: 50px;
           width: 160px;
@@ -135,10 +141,8 @@
           justify-content: center;
           background-color: white;
           border: 1px solid $color-light-border;
-
-          &:not(:first-child) {
-            margin-left: 15px;
-          }
+          margin-right: 10px;
+          margin-top: 10px;
 
           &.active {
             border: 1px solid $color-primary-base;

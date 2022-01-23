@@ -1,2 +1,6 @@
 export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const CART_TOTAL = 'CARD_TOTAL'
+export const HANDLE_QUANTITY = 'HANDLE_QUANTITY'
+
+export const ADD_CHOOSEN_PRODUCT = 'ADD_CHOOSEN_PRODUCT'
