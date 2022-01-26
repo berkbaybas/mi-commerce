@@ -23,9 +23,7 @@ function CartItem({ item }) {
         <p>{item.memory.price}TL</p>
       </div>
       <div className="CartItem-quantity">
-        <p>
-          <Quantity item={item} />
-        </p>
+        <Quantity item={item} />
       </div>
       <div className="CartItem-total">
         <p>{item.memory.price * item.qty}TL</p>
