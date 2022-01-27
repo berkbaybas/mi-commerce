@@ -10,7 +10,7 @@ function Cart() {
   return (
     <div className="Cart">
       <div className="container">
-        {cart.items !== [] && (
+        {cart.items.length !== 0 && (
           <div className="Cart-header">
             <div className="Cart-header-image">
               <p>Ürün resim</p>
@@ -29,7 +29,7 @@ function Cart() {
             </div>
           </div>
         )}
-        {cart.items !== [] ? (
+        {cart.items.length !== 0 ? (
           cart.items.map((item, index) => <CartItem key={index} item={item} />)
         ) : (
           <div>
