@@ -15,6 +15,11 @@
     width: 56px;
     border-radius: 20px;
     cursor: pointer;
+    display: flex;
+
+    a {
+      width: 100%;
+    }
 
     &:hover {
       .Header-logo-icon {
@@ -26,6 +31,7 @@
       width: 112px;
       transform: translateX(-56px);
       transition: transform 0.1s ease;
+      pointer-events: none; // hover effect problem
     }
   }
   &-learnMore {
