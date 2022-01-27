@@ -1,7 +1,8 @@
-import { ADD_CHOOSEN_PRODUCT } from '../constant/actionTypes'
+import { ADD_CHOOSEN_PRODUCT, FETCH_PRODUCTS } from '../constant/actionTypes'
 
 const INITIAL_STATE = {
-  choosenProduct: {}
+  choosenProduct: {},
+  items: []
 }
 
 const productReducer = (state = INITIAL_STATE, action) => {
@@ -9,6 +10,8 @@ const productReducer = (state = INITIAL_STATE, action) => {
     case ADD_CHOOSEN_PRODUCT:
       console.log(action.payload)
       return { ...state, choosenProduct: action.payload }
+    case FETCH_PRODUCTS:
+      return { ...state, items: action.payload }
     default:
       return state
   }

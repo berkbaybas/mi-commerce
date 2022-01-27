@@ -6,7 +6,7 @@ import CartItem from '../components/Cart/CartItem'
 
 function Cart() {
   const cart = useSelector((state) => state.cart)
-  console.log(cart.items)
+  console.log(cart.items === [] && true)
   return (
     <div className="Cart">
       <div className="container">
