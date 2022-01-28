@@ -103,15 +103,15 @@ function ProductDetail() {
               <div className="ProductDetail-option-support">
                 <div className="support-item">
                   <FiCheckCircle />
-                  <a className="support-item-link">2 Yıl Garanti</a>
+                  <span className="support-item-link">2 Yıl Garanti</span>
                 </div>
                 <div className="support-item">
                   <FiCheckCircle />
-                  <a className="support-item-link">14 Gün İçinde İade</a>
+                  <span className="support-item-link">14 Gün İçinde İade</span>
                 </div>
                 <div className="support-item">
                   <FiCheckCircle />
-                  <a className="support-item-link">Ücretsiz Kargo</a>
+                  <span className="support-item-link">Ücretsiz Kargo</span>
                 </div>
               </div>
               <div className="ProductDetail-option-memory">

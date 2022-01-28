@@ -1,0 +1,30 @@
+.Footer {
+  background-color: $color-footer-background;
+  color: $color-light-title;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: 500px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &-links {
+    font-size: 14px;
+    margin-top: 14px;
+
+    &-title {
+      font-size: 20px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    ul {
+      li {
+        margin-top: 14px;
+      }
+    }
+  }
+}

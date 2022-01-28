@@ -5,6 +5,8 @@
 .ProductDetail {
   display: flex;
   align-items: flex-start;
+  padding-bottom: 40px;
+
   &-image {
     flex: 1;
     max-width: 50%;
