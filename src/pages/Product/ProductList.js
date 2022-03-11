@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import axios from 'axios'
-import { fetchProducts } from '../../actions/productActions'
+import { fetchProducts } from '../../store/actions/productActions'
 
 import Product from '../../components/Product'
-
-import { API_URL } from '../../constant/ApiUrl'
 
 function ProductList() {
   const dispatch = useDispatch()

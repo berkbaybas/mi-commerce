@@ -1,4 +1,4 @@
-import { ADD_CHOOSEN_PRODUCT, FETCH_PRODUCTS } from '../constant/actionTypes'
+import { ADD_CHOOSEN_PRODUCT, FETCH_PRODUCTS } from '../../constant/actionTypes'
 
 const INITIAL_STATE = {
   choosenProduct: {},

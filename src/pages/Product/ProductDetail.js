@@ -3,13 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
-import { addToCart } from '../../actions/cartActions'
-import { addChoosenProduct } from '../../actions/productActions'
+import { addToCart } from '../../store/actions/cartActions'
+import { addChoosenProduct } from '../../store/actions/productActions'
 
 import ProductOptionTitle from '../../components/shared/ProductOptionTitle'
-import Quantity from '../../components/shared/Quantity'
 import { FiMinus, FiPlus, FiCheckCircle } from 'react-icons/fi'
-import {} from 'react-icons/fi'
 
 import { API_URL } from '../../constant/ApiUrl'
 

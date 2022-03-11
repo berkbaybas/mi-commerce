@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { removeFromCart } from '../../actions/cartActions'
+import { removeFromCart } from '../../store/actions/cartActions'
 
 import { AiOutlineClose } from 'react-icons/ai'
 import Quantity from '../shared/Quantity'

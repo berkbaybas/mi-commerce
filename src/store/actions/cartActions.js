@@ -3,7 +3,7 @@ import {
   REMOVE_FROM_CART,
   CART_TOTAL,
   HANDLE_QUANTITY
-} from '../constant/actionTypes'
+} from '../../constant/actionTypes'
 
 export const addToCart = (item) => (dispatch) => {
   dispatch({ type: ADD_TO_CART, payload: item })

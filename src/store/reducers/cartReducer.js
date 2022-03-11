@@ -3,7 +3,7 @@ import {
   REMOVE_FROM_CART,
   CART_TOTAL,
   HANDLE_QUANTITY
-} from '../constant/actionTypes'
+} from '../../constant/actionTypes'
 
 const INITIAL_STATE = {
   items: [],

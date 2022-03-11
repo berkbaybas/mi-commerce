@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { FiMinus, FiPlus } from 'react-icons/fi'
-import { handleQuantity } from '../../actions/cartActions'
+import { handleQuantity } from '../../store/actions/cartActions'
 
 function Quantity({ item }) {
   const itemsInCart = useSelector((state) => state.cart.items)
